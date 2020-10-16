@@ -1,0 +1,63 @@
+#!/bin/bash
+# Admin and Security admin menu.
+
+# Admin Menu function
+function admin_menu() {
+
+	# Clear the screen
+	clear
+
+	# Create menu options
+	echo "1. List Running Processes"
+	echo "2. Show Open Network Sockets"
+	echo "3. Check currently logged in users"
+	echo "[E]xit"
+
+	# Prompt for the menu option
+	echo -n "Please enter a value above"
+
+	#Read in the user input
+	read option
+
+	# Case statement to process options
+	case "${option}" in
+
+		1) ps -ef | less
+		
+		;;
+
+		2) 
+			
+lsof -i -n | less netstat -an --inet | less
+
+		;;
+
+		3) w | less
+
+		;;
+
+		"[Ee]") exit 0
+		
+		;;
+
+		*) echo "| Invalid Option |"
+			sleep 3
+			admin_menu
+
+		;;
+
+	# Stops the case statement
+	esac
+
+# Show admin menu
+admin_menu
+
+}
+
+# Main Menu
+
+	# Clear the screen
+
+	# Create menu options
+
+	# Prompt for the menu option and read in the option

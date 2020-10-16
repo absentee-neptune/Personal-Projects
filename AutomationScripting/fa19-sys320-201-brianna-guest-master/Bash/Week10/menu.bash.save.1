@@ -1,0 +1,202 @@
+#!/bin/bash
+# Admin and Security admin menu.
+
+
+# Admin Menu function
+function admin_menu() {
+
+	# Clear the screen
+	clear
+
+	# Create menu options
+	echo "| System Administration Menu |"
+	echo ""
+	echo "1. List Running Processes"
+        echo "2. Show Open Network Sockets"
+        echo "3. Check Logged in Users"
+	echo "4. Show current username and groups"
+	echo "5. Show last users logged on"
+	echo "9. Return to Main Menu"
+	echo ""
+        echo "[E]xit"
+
+	# Prompt for the menu option
+	echo ""
+	echo -n "Please enter an option: "
+
+	# Read in the user input
+	read option
+
+	# Case statement to process options
+	case ${option} in
+
+                1) ps -ef | less
+
+                ;;
+
+                2) netstat -an --inet | less
+                        # lsof -i -n | less
+
+		;;
+
+		3) w | less
+
+		;;
+
+		4) id | less
+
+		# Print real and effective user id (uid) and group id (gid), 
+		#prints identity information about the given user
+		# This is a good command as is gives current identity information about the user 
+		#to make sure they are in the right account and such
+
+		;;
+
+		5) last -a | less
+
+		# Prints the last users who logged on
+		# This is a good command as if an issue with the system arose 
+		#the administrator can check who was last logged on and 
+		#investigate their actions
+
+		;;
+
+		6) lsusb | less
+
+		;;
+
+		7) lscpu | less
+
+		;;
+
+		8) lshw | less
+
+		;;
+
+		9) main_menu
+
+		;;
+
+                [Ee]) exit 0
+
+                ;;
+
+                *) echo "| Invalid input |"
+                        sleep 3
+                        admin_menu
+
+                ;;
+
+	# Stops the case statement
+        esac
+
+# Call admin_menu
+admin_menu
+
+} # End admin_menu function
+
+
+#Security Menu
+function security_menu() {
+	
+	# Clear the screen
+	clear
+
+	# Create menu options
+	echo "| Security Administration Menu |"
+	echo ""
+	echo "1. Show last logged in users"
+	echo "2. Check installed packages"
+	echo "3. Check all users and their ID"
+	echo "4. Return to Main Menu"
+	echo ""
+	echo "[E]xit"
+
+	# Prompt for the menu option
+        echo ""
+	echo -n "Please enter an option: "
+
+        # Read in the user input
+        read option
+
+	# Case statement to process options
+	case ${option} in
+	
+		1) last -adx | less
+
+		;;
+
+		2) dpkg -l | less
+
+		;;
+
+		3) cut -d: -f1,3 /etc/passwd
+
+		;;
+
+		4) main_menu
+
+		;;
+
+		[Ee]) exit 0
+
+		;;
+
+		*) echo "| Invalid input |"
+                        sleep 3
+                        admin_menu
+
+                ;;
+
+	# Stops the case statement
+	esac
+
+# Call security menu
+security_menu
+
+} # End security_menu function
+
+
+# Main Menu
+function main_menu() {
+
+	# Clear the screen
+	 clear
+
+	# Create menu options
+	echo "| Administration |"
+	echo ""
+	echo "1. System Admin Menu"
+        echo "2. Security Admin Menu"
+	echo ""
+        echo "[E]xit"
+
+	# Prompt for the menu option and read in the option
+	echo ""
+	echo -n "Please select a menu: "
+	read menuOption
+
+	if [[ ${menuOption} -eq 1 ]]
+        then
+
+		# Call the admin_menu function
+                admin_menu
+
+        elif [[ ${menuOption} -eq 2 ]]
+        then
+		
+		# Call the security_menu function
+                security_menu
+
+        else
+		
+		# Exit the program
+                exit 0
+
+        fi
+
+} # End main_menu function
+
+
+# Call main_menu function
+main_menu

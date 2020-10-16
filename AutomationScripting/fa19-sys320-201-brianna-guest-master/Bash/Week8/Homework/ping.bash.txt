@@ -1,0 +1,21 @@
+# Week 8 Assignment - Ping
+
+# a for loop where ${number} is every number between 0 and 255
+for number in $(seq 0 255)
+do
+        cmd=$(ping -c 1 192.168.4.$number)
+        if [ "$number" == "0" ] || [ "$number" == "255" ]
+        then
+                # if the last octet of the host is 0 or 255
+                echo "You cannot ping 192.168.4.$number on a /24"
+        else
+                if [ "$cmd" != "0% packet loss" ]
+                then
+                        # if host is up
+                        echo "| 192.168.4.$number is up |"
+                else
+                        # if host is down
+                        echo "| 192.168.4.$number is down |"
+                fi
+	fi
+done

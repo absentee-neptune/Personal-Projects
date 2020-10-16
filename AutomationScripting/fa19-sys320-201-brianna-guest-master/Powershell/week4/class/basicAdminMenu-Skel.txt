@@ -1,0 +1,89 @@
+# Create menus for sys admin and sec admin task
+
+
+
+    # Clear the screen
+    
+
+    # Create our menus
+
+    # Prompt the user for a selection
+    $u_select = read-host -Prompt "Please select one of the options above"
+
+    # Process the user response
+    if ($u_select -eq 1) {
+    
+        # Call the sysadmin function
+    
+    } elseif ($u_select -eq 2 ) {
+
+        # Call the secAdmin function
+        secAdmin
+
+    } elseif ($u_select -eq "E") {
+
+        # exit the program
+        exit
+
+    } else {
+    
+        write-host "Invalid value"
+        exit
+    
+    }
+
+
+
+
+# This function will provide a prompt to the user to hit Enter when they are done reviewing the results
+# and take them back to the menu they were in.
+function allDone  {
+
+    read-host -prompt "Press [Enter] when done."
+
+}
+
+# Process sys admin tasks.
+
+
+    # Clear the screen
+    clear
+
+    # Build our menu
+   
+    # Prompt the user
+   
+    #Process the user's input
+    if ($sysAdminTask -eq "R") {
+    
+    
+    } elseif ($sysAdminTask -eq 1) {
+    
+    
+    } elseif ($sysAdminTask -eq 2) {
+    
+   
+    } elseif ($sysAdminTask -eq 3) {
+    
+   
+    } else {
+    
+        write-host "Invalid option"
+        sleep 4
+
+        # Call the system admin menu so the user can start again.
+        sysAdmin
+    
+    }
+
+    # Allow the user to review the results
+    
+
+    # Call the sysAdmin menu, because they are currently working in this menu.
+    
+
+
+
+# call the mainMenu function
+
+
