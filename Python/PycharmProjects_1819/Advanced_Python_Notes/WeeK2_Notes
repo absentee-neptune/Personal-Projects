@@ -1,0 +1,23 @@
+object = collection of data (attributes, members, or properties) and associated behavior (methods)
+class defines a class of object
+    acts as a blueprint
+    attributes
+    whereas object is a particular instance of a class
+association = generic relationship between classes
+    an asterisk = 'many go to other', wildcard
+
+Composition and Aggregation
+composition = collecting several object to create a new one
+
+OO Analysis - look at the problem and identify the objects and interaction between objects
+    what needs to be done
+    a set of requirements
+OO Design - converting requirements into an implementation specification
+    how things should be done
+
+
+Object Oriented Analysis
+    (1) Identify classes objects - look at nouns in the problem description
+    (2) Define attributes for each class - adjectives and nouns
+    (3) Define behaviors for each class - verbs
+    (4) Define relationships between classes

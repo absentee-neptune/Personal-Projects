@@ -1,0 +1,22 @@
+CLass Example: War Program Outline
+
+Classes:
+    Deck
+        attributes:
+            cards
+        methods:
+            shuffle()
+            draw_card()
+            is_empty()
+    Hand
+        attributes:
+        methods:
+            add_card()
+            draw_card()
+            is_empty()
+            shuffle()
+    Card
+        attributes:
+            rank
+        methods:
+            to_string()
